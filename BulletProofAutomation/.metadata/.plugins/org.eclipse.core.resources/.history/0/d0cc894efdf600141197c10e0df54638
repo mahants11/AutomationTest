@@ -1,0 +1,24 @@
+package com.BulletProofAutomation.pageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SearchPage extends AbstractPage {
+
+	public SearchPage(WebDriver driver) {
+		super(driver);
+		}
+	public SearchPage clickOnLink(String link)
+	{
+		
+		driver.findElement(By.linkText(link)).click();
+		return new SearchPage(driver);	
+	}
+	
+	public FullCastPage clickOnCastLink(String link)
+	{
+		
+		driver.findElement(By.linkText(link)).click();
+		return new FullCastPage(driver);	
+	}
+}

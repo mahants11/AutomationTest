@@ -1,0 +1,14 @@
+package com.BulletProofAutomation.BulletProofAutomation;
+
+import org.junit.runner.RunWith;
+
+import cucumber.api.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+@Cucumber.Options(
+		format = {"pretty","jason:target/"},
+		features={"src/test/resource"}
+		)
+public class RunnerTest {
+
+}

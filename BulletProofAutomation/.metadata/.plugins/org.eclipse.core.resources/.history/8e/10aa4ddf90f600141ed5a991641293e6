@@ -1,0 +1,23 @@
+package com.BulletProofAutomation.pageobject
+
+import org.openqa.selenium.WebDriver;
+
+public class AbstractPage {
+
+	protected WebDriver driver;
+
+	public AbstractPage (WebDriver driver)
+	{
+		this.driver=driver;
+	}
+	public HomePage navigateHomePage () throws InterruptedException{
+		driver.navigate().to("http://www.imdb.com");
+		Thread.sleep(10000);
+		return new HomePage(driver);
+	}
+	
+	public void closeDriver()
+	{
+		driver.quit();
+	}
+}

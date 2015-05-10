@@ -1,0 +1,36 @@
+package com.BulletProofAutomation.pageobject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+public class HomePage extends AbstractPage{
+
+	public HomePage(WebDriver driver) {
+		super(driver);
+	}
+
+	/* Method Name 	: search for given keyword
+	 Description	:  Enter Search keyword and hit submit
+	 */
+	public SearchPage searchText(String text) throws InterruptedException
+	{
+		//Enter the  keyword
+		//WebElement.sendKeys(Keys.RETURN);
+		
+		driver.findElement(By.id("navbar-query")).sendKeys(Keys.RETURN);
+		
+		driver.findElement(By.xpath("//*[@id='navbar-query']")).sendKeys(text);
+		Thread.sleep(1000);
+		return new SearchPage(driver);
+	}
+
+	public SearchPage submit() throws InterruptedException
+	{
+		//Submit button
+		driver.findElement(By.id("navbar-submit-button")).click();
+		Thread.sleep(1000);
+		return new SearchPage(driver);
+	}
+
+}

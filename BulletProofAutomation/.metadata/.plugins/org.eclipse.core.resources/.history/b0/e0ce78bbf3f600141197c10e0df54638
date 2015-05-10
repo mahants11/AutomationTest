@@ -1,0 +1,54 @@
+package com.BulletProofAutomation.BulletProofAutomation;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class Steps {
+
+	WebDriver driver = new FirefoxDriver();
+	
+	@Given("^I am on the IMDB site$")
+	public void I_am_on_the_IMDB_site() throws Throwable {
+		driver.navigate().to("http://www.imdb.com");
+		Thread.sleep(10000);
+		driver.manage().window().maximize();
+	}
+
+	@When("^I Enter \"([^\"]*)\" in search field$")
+	public void I_Enter_in_search_field(String arg1) throws Throwable {
+		driver.findElement(By.xpath("//*[@id='navbar-query']")).sendKeys(arg1);
+		Thread.sleep(1000);
+	}
+
+	@And("^I click on  Button$")
+	public void I_click_on_Button() throws Throwable {
+		driver.findElement(By.id("navbar-submit-button")).click();
+		Thread.sleep(1000);
+	}
+
+	@And("^I click on \"([^\"]*)\" link$")
+	public void I_click_on_link(String arg1) throws Throwable {
+		driver.findElement(By.linkText(arg1)).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("^I check \"([^\"]*)\" message for \"([^\"]*)\"$")
+	public void I_check_message_for(String arg1, String arg2) throws Throwable {
+		//String castname=driver.findElement(By.xpath(".//*[@id='fullcredits_content']/table[29]")).getText();
+		String compare=arg2+' '+'.'+'.'+'.'+' '+ arg1;
+		Assert.assertTrue(driver.findElement(By.xpath
+				(".//*[@id='fullcredits_content']/table[29]")).getText().equalsIgnoreCase(compare));
+		System.out.println("Specail thanks against actor is available");
+	}
+
+	@And("^I close browser$")
+	public void I_close_browser() throws Throwable {
+		driver.close();
+	}
+}

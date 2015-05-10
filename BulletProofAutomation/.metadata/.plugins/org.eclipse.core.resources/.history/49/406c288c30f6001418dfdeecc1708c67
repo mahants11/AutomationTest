@@ -1,0 +1,12 @@
+Feature: Launch IMDB site and search for Star Wars: Episode I.
+
+  Background: 
+    Given I am on the IMDB site
+
+  Scenario: To Search for given actor
+    When I Enter "Star Wars: Episode I" in search field
+    And I click on "Search" Button
+    And I click on "Star Wars: Episode I - The Phantom Menace" link
+    And I click on "Cast and Crew" link
+    Then I check "special thanks " message for "Jim Morris"
+    And I close browser

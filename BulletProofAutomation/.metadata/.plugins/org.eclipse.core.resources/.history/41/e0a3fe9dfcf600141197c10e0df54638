@@ -1,0 +1,24 @@
+package com.BulletProofAutomation.pageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LandingPage extends AbstractPage {
+
+	public LandingPage(WebDriver driver) {
+		super(driver);
+	}
+	public LandingPage enterKeyword(String text)
+	
+	{
+		driver.findElement(By.xpath("//*[@id='navbar-query']")).sendKeys(text);
+		return new LandingPage(driver);
+	}
+	
+	public SearchPage submit()
+	{
+		driver.findElement(By.id("navbar-submit-button")).click();
+		return new SearchPage(driver);
+	}
+
+}

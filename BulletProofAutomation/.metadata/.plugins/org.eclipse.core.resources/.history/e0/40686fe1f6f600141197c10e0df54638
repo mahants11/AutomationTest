@@ -1,0 +1,5 @@
+package com.BulletProofAutomation.pageObject;
+
+public class FullCastPage extends SearchPage {
+
+}

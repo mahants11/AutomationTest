@@ -1,0 +1,29 @@
+package com.cucumber.MavenCucumber.pageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SearchPage extends AbstractPage {
+
+	public SearchPage(WebDriver driver) {
+		super(driver);
+	}
+
+	public SearchPage clickLink() throws InterruptedException
+	{
+		//Click the link
+		driver.findElement(By.linkText("Star Wars: Episode I - The Phantom Menace")).click();
+		Thread.sleep(1000);
+		return new SearchPage(driver);
+	}
+	
+	public FullCastPage clickFullCastLink() throws InterruptedException
+	{
+		//Click the link
+		driver.findElement(By.linkText("See full cast and crew")).click();
+		Thread.sleep(1000);
+		//return new FullCrewPage(driver);
+		return new FullCastPage(driver);
+	}
+	
+}

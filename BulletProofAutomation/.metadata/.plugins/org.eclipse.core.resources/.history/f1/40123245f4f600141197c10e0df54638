@@ -1,0 +1,19 @@
+package com.BulletProofAutomation.pageObject;
+
+import org.openqa.selenium.WebDriver;
+
+public class AbstractPage {
+	protected WebDriver driver;
+	
+	public AbstractPage (WebDriver driver)
+	{
+		this.driver= driver;
+	}
+	public LandingPage navigateToWebApp()
+	{
+		driver.navigate().to("http://www.imdb.com");
+		Thread.sleep(5000);
+		driver.manage().window().maximize();
+		return new LandingPage(driver);
+	}
+}

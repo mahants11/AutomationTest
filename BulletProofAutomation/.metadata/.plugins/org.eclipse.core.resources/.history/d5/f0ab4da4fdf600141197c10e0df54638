@@ -1,0 +1,57 @@
+package com.BulletProofAutomation.BulletProofAutomation;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import com.BulletProofAutomation.pageObject.FullCastPage;
+import com.BulletProofAutomation.pageObject.LandingPage;
+import com.BulletProofAutomation.pageObject.SearchPage;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class Steps {
+
+	//Variable declaration
+	WebDriver driver = new FirefoxDriver();
+	LandingPage landingPage;
+	SearchPage searchPage;
+	FullCastPage fullCastPage;
+
+	@Given("^I am on the IMDB site$")
+	public void I_am_on_the_IMDB_site() throws Throwable {
+		landingPage =new LandingPage(driver);
+		landingPage.navigateToWebApp();
+	}
+
+	@When("^I Enter \"([^\"]*)\" in search field$")
+	public void I_Enter_in_search_field(String arg1) throws Throwable {
+		landingPage.enterKeyword(arg1);
+	}
+
+	@And("^I click on  Button$")
+	public void I_click_on_Button() throws Throwable {
+		searchPage=landingPage.submit();
+	}
+
+	@And("^I click on \"([^\"]*)\" link$")
+	public void I_click_on_link(String arg1) throws Throwable {
+		searchPage.clickOnLink(arg1);
+	}
+	
+	@When("^I navigate to \"([^\"]*)\" cast full link$")
+	public void I_navigate_to_cast_full_link(String arg1) throws Throwable {
+		fullCastPage = searchPage.clickOnCastLink(arg1);
+	}
+	
+	@Then("^I check \"([^\"]*)\" message for \"([^\"]*)\"$")
+	public void I_check_message_for(String arg1, String arg2) throws Throwable {
+		fullCastPage.validateMessage(arg1, arg2);
+	}
+
+	@And("^I close browser$")
+	public void I_close_browser() throws Throwable {
+		fullCastPage.closeDriver();
+	}
+}

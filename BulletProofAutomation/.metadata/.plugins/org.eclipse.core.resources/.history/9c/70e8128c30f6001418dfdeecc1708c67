@@ -1,0 +1,36 @@
+package com.BulletProofAutomation.BulletProofAutomation;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class Steps {
+	@Given("^I am on the IMDB site$")
+	public void I_am_on_the_IMDB_site() throws Throwable {
+	 	    
+	}
+
+	@When("^I Enter \"([^\"]*)\" in search field$")
+	public void I_Enter_in_search_field(String arg1) throws Throwable {
+	    	
+	}
+
+	@When("^I click on \"([^\"]*)\" Button$")
+	public void I_click_on_Button(String arg1) throws Throwable {
+	    
+	}
+
+	@When("^I click on \"([^\"]*)\" link$")
+	public void I_click_on_link(String arg1) throws Throwable {
+	    	}
+
+	@Then("^I check \"([^\"]*)\" message for \"([^\"]*)\"$")
+	public void I_check_message_for(String arg1, String arg2) throws Throwable {
+	    	}
+
+	@Then("^I close browser$")
+	public void I_close_browser() throws Throwable {
+	    }
+
+
+}
